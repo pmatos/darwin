@@ -17,7 +17,7 @@
 ;; http://www.mail-archive.com/users@racket-lang.org/msg18108.html
 
 (require (for-syntax racket/base)
-         frog/widgets
+         darwin/widgets
          racket/contract/base
          racket/contract/region
          racket/dict
@@ -34,7 +34,7 @@
 ;; be required above normally in this template.rkt module.
 (define mods '(racket
                web-server/templates
-               frog/widgets))
+               darwin/widgets))
 
 ;; Create a namespace in which to evaluate templates, attach and
 ;; require the desired modules, and keep reusing it (faster).

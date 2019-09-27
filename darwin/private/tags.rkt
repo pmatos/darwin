@@ -106,7 +106,7 @@
                           page-num   ;exact-positive-integer?
                           num-pages) ;exact-positive-integer?
   (define file (file/page base-file page-num))
-  (prn1 "Generating ~a" (abs->rel/www file))
+  (prn1 "Generating index page ~a" (abs->rel/www file))
   (~> (for/list ([x (in-list xs)])
         (match-define
          (post title src modtime dest-path uri-path date older newer tags blurb more? body) x)

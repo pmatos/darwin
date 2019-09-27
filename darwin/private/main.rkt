@@ -42,7 +42,7 @@
   (when (eq? 'windows (system-type 'os))
     (file-stream-buffer-mode (current-output-port) 'line)
     (file-stream-buffer-mode (current-error-port) 'line))
-  (printf "Frog ~a\n" (frog-version))
+  (printf "Darwin ~a\n" (frog-version))
   (parameterize ([top (find-frog-root)])
     (when (vector-member "--init" (current-command-line-arguments))
       (init-project)

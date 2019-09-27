@@ -6,12 +6,12 @@
                      scribble/text
                      scribble/manual
                      xml/xexpr
-                     frog/enhance-body
-                     frog/paths
-                     frog/params
-                     frog/scribble
-                     frog/widgets
-                     frog/verbosity)
+                     darwin/enhance-body
+                     darwin/paths
+                     darwin/params
+                     darwin/scribble
+                     darwin/widgets
+                     darwin/verbosity)
           scribble/core
           scribble/extract)
 
@@ -772,12 +772,12 @@ post template} for usage examples.
 
 If you'd like to add a widget, pull requests are welcome!
 
-@defmodule[frog/widgets]
+@defmodule[darwin/widgets]
 
 In your templates, this module is already @racket[require]d.
 
 @; See widget.rkt define/doc forms.
-@include-extracted[frog/widgets]
+@include-extracted[darwin/widgets]
 
 
 @section{Embedding a blog in an existing site}
@@ -825,10 +825,10 @@ adjusting your @secref["page-template"] and so on.
 You may set these parameters in the @racket[init] function in your
 @secref["config"].
 
-@defmodule[frog/params]
+@defmodule[darwin/params]
 
 (This module is automatically required for you by the
-@racketmodname[frog/config] language used in @secref["config"].)
+@racketmodname[darwin/config] language used in @secref["config"].)
 
 @defparam[current-title v string? #:value "My Awesome Blog"]{The title
 of the blog. Used when generating feeds.}
@@ -953,12 +953,12 @@ as it is likely that the file will be an output.}
 You may call these functions in the @racket[enhance-body] function in
 your @secref["config"].
 
-@defmodule[frog/enhance-body]
+@defmodule[darwin/enhance-body]
 
 (This module is automatically required for you by the
-@racketmodname[frog/config] language used in @secref["config"].)
+@racketmodname[darwin/config] language used in @secref["config"].)
 
-@include-extracted[frog/enhance-body]
+@include-extracted[darwin/enhance-body]
 
 
 @section[#:tag "paths"]{Paths}
@@ -966,10 +966,10 @@ your @secref["config"].
 Although you may use these definitions in your @secref["config"], they
 are more likely to be used by third-party @secref["body-enhancers"].
 
-@defmodule[frog/paths]
+@defmodule[darwin/paths]
 
 (This module is automatically required for you by the
-@racketmodname[frog/config] language used in @secref["config"].)
+@racketmodname[darwin/config] language used in @secref["config"].)
 
 These definitions represent locations of certain local directories and
 files --- as well as translating between local filesystem paths and
@@ -977,4 +977,4 @@ URI paths that will work on the deployed web site. One wrinkle is that
 the local file paths might be Windows style, which differs from the
 Unix style used by URI paths.
 
-@include-extracted[frog/paths]
+@include-extracted[darwin/paths]
