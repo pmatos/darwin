@@ -317,18 +317,15 @@
   (define (post-has-tag? tag post)
     (or (equal? tag "all")
         (member tag (post-tags post))))
-  (define (post-is-draft? post)
-    (member "DRAFT" (post-tags post)))
   (for ([(tag paths) (in-hash new-tags)])
     (define posts-this-tag
       (filter values
               (for/list ([src (in-list sorted-posts-src-paths)])
                 (define post (hash-ref new-posts src #f))
                 (and post (post-has-tag? tag post) post))))
-    (when (and (not (post-is-draft? post))
-               (or (not (equal? paths (hash-ref old-tags tag #f)))
-                   (stale/posts? posts-this-tag)
-                   (stale/templates? tag)))
+    (when (or (not (equal? paths (hash-ref old-tags tag #f)))
+              (stale/posts? posts-this-tag)
+              (stale/templates? tag))
       (write-stuff-for-tag tag posts-this-tag)))
 
   ;; [3] Save `new-posts` (to be used as the `old-posts` for our next
