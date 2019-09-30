@@ -96,7 +96,7 @@
   ;; Sort alphabetically by tag name. Use association list (can't sort
   ;; a hash).
   (~> (for/list ([(k v) (in-hash (all-tags))]
-                 #:unless (member k '("all" "UNLINKED")))
+                 #:unless (member k '("all" "DRAFT")))
         (cons k v))
       (sort string-ci<=? #:key car)))
 
@@ -104,7 +104,7 @@
   `(span
     ([class "tags"])
     ,@(add-between (for/list ([t (in-list tags)]
-                              #:when (and (not (equal? t "UNLINKED"))
+                              #:when (and (not (equal? t "DRAFT"))
                                           (not (author-tag t))))
                      (tag->xexpr t values))
                    ", ")))
@@ -113,7 +113,7 @@
   `(span
     ([class "authors"])
     ,@(match (add-between (for/list ([t (in-list tags)]
-                                     #:when (and (not (equal? t "UNLINKED"))
+                                     #:when (and (not (equal? t "DRAFT"))
                                                  (author-tag t)))
                             (tag->xexpr t author-tag))
                           ", ")

@@ -365,7 +365,7 @@
           [else                          (string<=? b a)])))
 
 (define (linked-post? p)
-  (not (member "UNLINKED" (post-tags p))))
+  (not (member "DRAFT" (post-tags p))))
 
 ;; Given a (hash/c path? post?) return a (hash/c string? (set/c
 ;; path?)), where the string is a tag. In other words this returns a
