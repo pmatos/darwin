@@ -20,7 +20,9 @@
 
         (define (load top)
           (define frog.rkt (build-path top "frog.rkt"))
+          (printf "Loading ~a~n" frog.rkt)
           (let ([fn (with-handlers ([exn:fail:filesystem? cannot-find-frog.rkt])
+                      (printf "Requiring ~a~n" 'id)
                       (dynamic-require frog.rkt 'id))])
             (when fn (set! id fn))) ...)
         (provide load))))
