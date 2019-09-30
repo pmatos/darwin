@@ -226,21 +226,21 @@ ignored, and may be deleted.}
 Your @filepath{frog.rkt} lets you use simple Racket code to configure
 and customize your blog.
 
-@defmodule[frog/config #:lang]
+@defmodule[darwin/config #:lang]
 
-The @racketmodname[frog/config] language provides bindings from:
+The @racketmodname[darwin/config] language provides bindings from:
 @itemlist[
 @item{@racketmodname[racket/base]}
 @item{@racketmodname[racket/contract/base]}
 @item{@racketmodname[racket/contract/region]}
 @item{@racketmodname[xml/xexpr]}
 @item{@racketmodname[rackjure/threading]}
-@item{@racketmodname[frog/params]}
-@item{@racketmodname[frog/paths]}
-@item{@racketmodname[frog/enhance-body]}
+@item{@racketmodname[darwin/params]}
+@item{@racketmodname[darwin/paths]}
+@item{@racketmodname[darwin/enhance-body]}
 ]
 
-Furthermore, the @racketmodname[frog/config] language ensures that you
+Furthermore, the @racketmodname[darwin/config] language ensures that you
 define three functions that are used by Frog:
 
 @defproc[#:link-target? #f (init) any]{
@@ -248,7 +248,7 @@ define three functions that are used by Frog:
 This is called once, early when Frog starts.
 
 You can set various parameters provided by
-@racketmodname[frog/params]. To start, you might only need to set a
+@racketmodname[darwin/params]. To start, you might only need to set a
 few:
 
 @itemlist[
@@ -262,25 +262,25 @@ few:
 This is called for each post or non-post page, giving you the
 opportunity to modify the @racket[xexpr?]s representing the content.
 
-You may call functions provided by @racketmodname[frog/enhance-body].
+You may call functions provided by @racketmodname[darwin/enhance-body].
 You may also @racket[require] and use functions provided by a
 third-party package.}
 
 @defproc[#:link-target? #f (clean) any]{
 
-Called during @exec{raco frog @DFlag{clean}}.}
+Called during @exec{raco darwin @DFlag{clean}}.}
 
 
 @subsection[#:tag "create-posts"]{Creating blog posts}
 
 A typical workflow:
 
-1. Create a new post with @exec{raco frog @Flag{n} "My Post Title"}.
+1. Create a new post with @exec{raco darwin @Flag{n} "My Post Title"}.
 The name of the new @tt{.md} file is displayed to stdout.
 
 2. Edit the @tt{.md} file in your preferred plain text editor.
 
-3. Regenerate your site and preview it with @exec{raco frog
+3. Regenerate your site and preview it with @exec{raco darwin
 @Flag{bp}}. (You might repeat steps 2 and 3 a few times until you're
 satisfied.)
 
@@ -300,7 +300,7 @@ Post source files in markdown format should be named
 @filepath{@italic{YYYY-MM-DD-TITLE}.md} and need to have some metadata
 in the first few lines.
 
-You can do @exec{raco frog @Flag{n} "My Title"} to create such a file
+You can do @exec{raco darwin @Flag{n} "My Title"} to create such a file
 easily. This will also fill in the required metadata section. The
 markdown file starts with a code block (indented 4 spaces) that must
 contain these three lines.
@@ -411,7 +411,7 @@ Scribble non-post page} for more information.
 
 @subsubsection{Pygments code blocks}
 
-@defmodule[frog/scribble]
+@defmodule[darwin/scribble]
 
 @defproc[(pygment-code [#:lang lang string?][str string?] ...) paragraph?]{
 In Scribble source files of course you can use @racket[codeblock],
@@ -424,7 +424,7 @@ be highlighted by Pygments.
 
 Example usage:
 @pre|{
-@(require frog/scribble)
+@(require darwin/scribble)
 @pygment-code[#:lang "js"]{function foo() {return 1;}}
 }|
 }

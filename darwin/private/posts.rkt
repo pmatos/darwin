@@ -78,10 +78,6 @@
          (parse-markdown text footnote-prefix)]))
     ;; Split to the meta-data and the body
     (match-define (list title date-str tags body) (meta-data xs name))
-    (when (member "DRAFT" tags)
-      (prn0 "Skipping ~a because it has the tag, 'DRAFT'"
-            (abs->rel/src path))
-      (return #f))
     ;; Split out the blurb (may be less than the entire body)
     (define-values (blurb more?) (above-the-fold body))
     ;; Make the destination HTML pathname

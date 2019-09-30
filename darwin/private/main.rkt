@@ -317,7 +317,8 @@
   (define (post-has-tag? tag post)
     (or (equal? tag "all")
         (member tag (post-tags post))))
-  (for ([(tag paths) (in-hash new-tags)])
+  (for ([(tag paths) (in-hash new-tags)]
+        #:unless (string=? tag "DRAFT"))
     (define posts-this-tag
       (filter values
               (for/list ([src (in-list sorted-posts-src-paths)])
