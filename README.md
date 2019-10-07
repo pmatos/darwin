@@ -17,7 +17,7 @@ You can also create non-post pages.
 The generated site uses [Bootstrap][], which is [responsive][],
 automatically adapting to various screen sizes.
 
-[Full documentation](http://docs.racket-lang.org/darwin/index.html).
+[Full documentation](http://docs.racket-lang.org/darwin@darwin/index.html).
 
 [Racket]: http://www.racket-lang.org
 [Markdown]: http://daringfireball.net/projects/markdown/syntax
