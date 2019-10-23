@@ -5,7 +5,7 @@
 ;; The idea here is that we make some variables visible in the
 ;; namespace in which the template is evaluated. Some of these are the
 ;; variables and values explicitly passed to us in `dict`. The others
-;; are from the modules web-server/templates and frog/widgets.
+;; are from the modules web-server/templates and darwin/widgets.
 ;;
 ;; Now, web-server/templates are normally used "statically" --
 ;; compiled into the web-server application. However it's also

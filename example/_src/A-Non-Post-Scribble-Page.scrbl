@@ -90,7 +90,7 @@ Here's a fancier one:
 How about non-Racket code? You can ask Pygments to syntax highlight it
 for you, like so:
 
-@(require frog/scribble)
+@(require darwin/scribble)
 
 @pygment-code[#:lang "js"]{
 /**

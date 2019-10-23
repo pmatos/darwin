@@ -35,14 +35,14 @@
             id contract contents ...))
 
 
-@title[#:tag "top"]{Frog}
-@author[@hyperlink["https://github.com/greghendershott"]{Greg Hendershott}]
+@title[#:tag "top"]{Darwin}
+@author[@hyperlink["https://github.com/pmatos"]{Paulo Matos}]
 
 @margin-note{Please use
-@hyperlink["https://github.com/greghendershott/frog/issues"]{GitHub
+@hyperlink["https://github.com/pmatos/darwin/issues"]{GitHub
 Issues} to report bugs or make feature requests.}
 
-Frog is a static web site generator written in
+Darwin is a static web site generator written in
 @hyperlink["https://www.racket-lang.org"]{Racket}.
 
 You write content in
@@ -62,14 +62,14 @@ The default templates use
 @hyperlink["https://en.wikipedia.org/wiki/Responsive_web_design"]{``responsive''}
 (adapts to various screen sizes).
 
-Why ``Frog''? @bold{Fr}ozen bl@bold{og}.
+Why ``Darwin''? Darwin is a fork of Greg Hendershott's @hyperlink["https://github.com/greghendershott/frog"]{frog} blog generator. Darwin is also the name of a species of frog.
 
 @table-of-contents[]
 
 
 @section{Quick start}
 
-@subsection{Installing Frog}
+@subsection{Installing Darwin}
 
 @itemlist[#:style 'ordered
 
@@ -79,7 +79,7 @@ On macOS you will need to add @tt{/Applications/Racket\
 7.0/bin} (or similar) to your @envvar{PATH} in order to be able to run
 things like @exec{racket} or @exec{raco} at the command line.}
 
-@item{Install Frog: @pre{$ raco pkg install frog}}
+@item{Install Darwin: @pre{$ raco pkg install darwin}}
 
 @item{Optional: If you want syntax highlighting for fenced code blocks:
 
@@ -87,11 +87,11 @@ things like @exec{racket} or @exec{raco} at the command line.}
 @item{Install the latest version of @hyperlink["https://www.python.org/downloads/"]{Python}.}
 @item{Install @hyperlink["http://pygments.org/"]{Pygments}: @pre{$ python3 -m pip install pygments}}]}]
 
-@subsection{Updating Frog}
+@subsection{Updating Darwin}
 
-To update Frog and its dependencies:
+To update Darwin and its dependencies:
 
-@pre{$ raco pkg update --update-deps frog}
+@pre{$ raco pkg update --update-deps darwin}
 
 @subsection{Starting a new blog project}
 
@@ -100,24 +100,24 @@ Creating a new blog project is 3 easy steps:
 @itemlist[#:style 'ordered
 
 @item{Create a subdirectory.
-@pre{$ mkdir frog-project}}
+@pre{$ mkdir darwin-project}}
 
 @item{Go there.
-@pre{$ cd frog-project}}
+@pre{$ cd darwin-project}}
 
-@item{Tell Frog to create default files and directories.
+@item{Tell Darwin to create default files and directories.
 @pre{
-$ raco frog --init
-Creating files in /tmp/frog-project/:
-/tmp/frog-project/frog.rkt
-/tmp/frog-project/_src/About.md
-/tmp/frog-project/_src/page-template.html
-/tmp/frog-project/_src/post-template.html
-/tmp/frog-project/_src/posts/2012-01-01-a-2012-blog-post.md
-/tmp/frog-project/css/
-/tmp/frog-project/js/
-/tmp/frog-project/img/
-Project ready. Try `raco frog -bp` to build and preview.
+$ raco darwin --init
+Creating files in /tmp/darwin-project/:
+/tmp/darwin-project/darwin.rkt
+/tmp/darwin-project/_src/About.md
+/tmp/darwin-project/_src/page-template.html
+/tmp/darwin-project/_src/post-template.html
+/tmp/darwin-project/_src/posts/2012-01-01-a-2012-blog-post.md
+/tmp/darwin-project/css/
+/tmp/darwin-project/js/
+/tmp/darwin-project/img/
+Project ready. Try `raco darwin -bp` to build and preview.
 }}
 
 ]
@@ -126,8 +126,8 @@ You can go ahead and build/preview this to get a feel for the default
 starting point:
 
 @pre{
-$ raco frog -bp
-Frog 0.26
+$ raco darwin -bp
+darwin 0.1
 Launching /usr/bin/python pipe.py
 Your Web application is running at http://localhost:3000/index.html.
 Stop this program at any time to terminate the Web Server.
@@ -138,19 +138,19 @@ Web Server stopped.
 
 @subsubsection{Project file tree}
 
-Here is the file tree that @exec{raco frog @DFlag{init}} creates for
-you and Frog expects:
+Here is the file tree that @exec{raco darwin @DFlag{init}} creates for
+you and Darwin expects:
 
 @pre{
 project/
   @comment{# Files provided by you:}
-  frog.rkt      @comment{# @secref["config"]}
+  darwin.rkt      @comment{# @secref["config"]}
   _src/         @comment{# default; see @racket[current-source-dir] in @secref["config"]}
     page-template.html  @comment{# entire page layout: @secref["page-template"]}
     post-template.html  @comment{# @tt{<article>} layout: @secref["post-template"]}
     index-template.html @comment{# index pages: @secref["index-template"]}
     posts/
-      @comment{# You'll create these using @exec{raco frog @Flag{n} <post-title>}}
+      @comment{# You'll create these using @exec{raco darwin @Flag{n} <post-title>}}
       2013-01-01-a-blog-post.md
       2013-02-15-another-blog-post.md
       @comment{...}
@@ -170,12 +170,12 @@ project/
   favicon.ico
 }
 
-Here are the files created by Frog when you run @exec{raco frog
+Here are the files created by Darwin when you run @exec{raco darwin
 @Flag{b}} to (re)build the blog:
 
 @pre{
 project/  @comment{# default; see @racket[current-output-dir] in @secref["config"]}
-  .frog/build   @comment{# a cache to support minimal rebuilds}
+  .darwin/build   @comment{# a cache to support minimal rebuilds}
   index*.html
   sitemap.txt
   tags/
@@ -196,8 +196,8 @@ project/  @comment{# default; see @racket[current-output-dir] in @secref["config
   ...
 }
 
-Although the Frog
-@hyperlink["https://github.com/greghendershott/frog/tree/master/example"]{example}
+Although the Darwin
+@hyperlink["https://github.com/pmatos/darwin/tree/master/example"]{example}
 project has copies for example purposes, for your own project you
 should get the official/latest Bootstrap 4 files directly from
 Bootstrap.
@@ -213,17 +213,17 @@ For examples of @filepath{pygments.css} code highlighting styles see
 @hyperlink["https://github.com/richleland/pygments-css"]{https://github.com/richleland/pygments-css}.
 
 
-@subsubsection[#:tag "config"]{@tt{frog.rkt}}
+@subsubsection[#:tag "config"]{@tt{darwin.rkt}}
 
-When you used @exec{raco frog @DFlag{init}} it created a
-@filepath{frog.rkt} file in your project directory. @margin-note*{If
-you upgrade from an older version of Frog that used a
-@filepath{.frogrc} file: The first time the newer version of Frog
-runs, it automatically creates an equivalent @filepath{frog.rkt}
-from your @filepath{.frogrc}. Thereafter the @filepath{.frogrc} is
+When you used @exec{raco darwin @DFlag{init}} it created a
+@filepath{darwin.rkt} file in your project directory. @margin-note*{If
+you upgrade from an older version of Darwin that used a
+@filepath{.darwinrc} file: The first time the newer version of Darwin
+runs, it automatically creates an equivalent @filepath{darwin.rkt}
+from your @filepath{.darwinrc}. Thereafter the @filepath{.darwinrc} is
 ignored, and may be deleted.}
 
-Your @filepath{frog.rkt} lets you use simple Racket code to configure
+Your @filepath{darwin.rkt} lets you use simple Racket code to configure
 and customize your blog.
 
 @defmodule[darwin/config #:lang]
@@ -241,11 +241,11 @@ The @racketmodname[darwin/config] language provides bindings from:
 ]
 
 Furthermore, the @racketmodname[darwin/config] language ensures that you
-define three functions that are used by Frog:
+define three functions that are used by Darwin:
 
 @defproc[#:link-target? #f (init) any]{
 
-This is called once, early when Frog starts.
+This is called once, early when Darwin starts.
 
 You can set various parameters provided by
 @racketmodname[darwin/params]. To start, you might only need to set a
@@ -357,7 +357,7 @@ prior to the extraction of the post metadata.
 
 @subsubsection[#:tag "markdown-code-blocks"]{Code blocks in markdown files}
 
-Frog optionally uses @hyperlink["http://pygments.org/"]{Pygments} to
+Darwin optionally uses @hyperlink["http://pygments.org/"]{Pygments} to
 do syntax highlighting. Pygments has lexers for many, many languages.
 Plus, it fits the spirit of static web site generation better than
 JavaScript options like SyntaxHighlighter.
@@ -400,13 +400,13 @@ Post source files in Scribble format should be named
 @tt{YYYY-MM-DD-TITLE.scrbl} and need to have some @secref["metadata"]
 in the first few lines.
 
-You can do @exec{raco frog @Flag{N} "My Title"} to create such a file
+You can do @exec{raco darwin @Flag{N} "My Title"} to create such a file
 easily. This will also fill in the required metadata section.
 
 See the
-@hyperlink["https://github.com/greghendershott/frog/blob/master/example/_src/posts/2013-06-19-a-scribble-post.scrbl"]{example
+@hyperlink["https://github.com/pmatos/darwin/blob/master/example/_src/posts/2013-06-19-a-scribble-post.scrbl"]{example
 Scribble post} and
-@hyperlink["https://github.com/greghendershott/frog/blob/master/example/_src/A-Non-Post-Scribble-Page.scrbl"]{example
+@hyperlink["https://github.com/pmatos/darwin/blob/master/example/_src/A-Non-Post-Scribble-Page.scrbl"]{example
 Scribble non-post page} for more information.
 
 @subsubsection{Pygments code blocks}
@@ -485,7 +485,7 @@ A @secref["page-template"] is used to define the overall @tt{html}
 element for all generated pages. Some types of pages also use a nested
 @secref["post-template"] or an @secref["index-template"].
 
-Frog uses the Racket @seclink["templates" #:doc
+Darwin uses the Racket @seclink["templates" #:doc
 '(lib "web-server/scribblings/web-server.scrbl")]{@racket[web-server/templates]}
 system based on @secref["reader" #:doc '(lib
 "scribblings/scribble/scribble.scrbl")]. This means that the files are
@@ -503,10 +503,10 @@ to minimize repetition.
 @subsection[#:tag "page-template"]{Page template}
 
 The @filepath{page-template.html} template specifies an @tt{<html>}
-element used by Frog to generate every page on your site.
+element used by Darwin to generate every page on your site.
 
 Anything in the file that looks like @tt{@"@variable"} or
-@tt{@"@|variable|"} is a template variable supplied by Frog. Most of
+@tt{@"@|variable|"} is a template variable supplied by Darwin. Most of
 these should be self-explanatory from their name and from seeing how
 they are used in the default template.
 
@@ -584,7 +584,7 @@ things that only make sense in the context of pages dedicated to one
 blog post.
 
 Anything in the file that looks like @tt|{@variable}| or
-@tt|{@|variable|}| is a template variable supplied by Frog. Most of
+@tt|{@|variable|}| is a template variable supplied by Darwin. Most of
 these should be self-explanatory from their name and from seeing how
 they are used in the default template.
 
@@ -648,7 +648,7 @@ buttons.
 }]
 
 Anything in the file that looks like @tt|{@variable}| or
-@tt|{@|variable|}| is a template variable supplied by Frog. Most of
+@tt|{@|variable|}| is a template variable supplied by Darwin. Most of
 these should be self-explanatory from their name and from seeing how
 they are used in the default template.
 
@@ -765,9 +765,9 @@ parameters (as opposed to putting stuff like @litchar{<!-- CHANGE THIS! -->}
 in the template).
 
 See the
-@hyperlink["https://github.com/greghendershott/frog/blob/master/example/_src/page-template.html"]{example
+@hyperlink["https://github.com/pmatos/darwin/blob/master/example/_src/page-template.html"]{example
 page template} and
-@hyperlink["https://github.com/greghendershott/frog/blob/master/example/_src/post-template.html"]{example
+@hyperlink["https://github.com/pmatos/darwin/blob/master/example/_src/post-template.html"]{example
 post template} for usage examples.
 
 If you'd like to add a widget, pull requests are welcome!
@@ -794,14 +794,14 @@ structure, e.g. @tt{example.com/blog/}. To do so:
 @tt{/blog/} as appropriate.}
 
 @item{In @secref["config"] use @racket[(current-uri-prefix "/blog")].
-This causes URIs generated by Frog to be prefixed with
+This causes URIs generated by Darwin to be prefixed with
 @tt{/blog}. (Other URIs --- such as @racket[current-posts-index-uri]
 and @racket[current-permalink] --- will automatically be prefixed with
 @tt{blog/}, so @italic{don't} change those!)}
 
 ]
 
-Using @exec{raco frog @Flag{p}} should open on your blog's index page
+Using @exec{raco darwin @Flag{p}} should open on your blog's index page
 at @filepath{/blog/index.html}, automatically. But you can add a
 @DFlag{root} flag in case you need to control it more specifically.
 
@@ -809,7 +809,7 @@ at @filepath{/blog/index.html}, automatically. But you can add a
 
 Will your blog be hosted at @tt{http://example.com/~user}?
 
-In your Frog project directory, create an output directory named
+In your Darwin project directory, create an output directory named
 @filepath{~user}:
 
 @pre{$ mkdir \~user  @comment{#use @litchar{\~} in shell for literal @tt{~}}}
@@ -855,14 +855,14 @@ prepended to URIs, including @racket[current-permalink] and
 site.}
 
 @defparam[current-editor v string? #:value "$EDITOR"]{What editor to
-launch with @exec{raco frog @DFlag{edit}}. @racket["$EDITOR"] means to
+launch with @exec{raco darwin @DFlag{edit}}. @racket["$EDITOR"] means to
 use the @envvar{$EDITOR} environment variable.}
 
 @defparam[current-editor-command v string? #:value "{editor} {filename}"]{
 The command to run, in case you need to customize how the editor is
 called. For example, @racket["{editor} {filename}"] will do
 @racket[(system "$EDITOR 2012-01-01-a-blog-post.md")]. For more
-examples, in Frog's source code see the @tt{test} submodule in
+examples, in Darwin's source code see the @tt{test} submodule in
 @filepath{paths.rkt}.}
 
 @defparam[current-show-tag-counts? v boolean? #:value #t]{When true,
@@ -876,7 +876,7 @@ style would be
 
 Another available pattern is @tt{{filename}}, which is the
 @tt{this-part} portion of your post's @tt{YYYY-MM-DD-this-part.md}
-file name. This is in case you don't like Frog's encoding of your post
+file name. This is in case you don't like Darwin's encoding of your post
 title and want to specify it exactly yourself, e.g. to match a
 previous blog URI.}
 
@@ -938,10 +938,10 @@ The number of seconds to wait between each change watching.}
           (path? (or/c 'create 'delete 'modify) . -> . boolean?)]{
 The procedure to test if a file change during a watch needs a rebuild.
 
-If Frog is run with the @tt{-w} or @tt{--watch} flag, @racket[rebuild?] will be invoked
+If Darwin is run with the @tt{-w} or @tt{--watch} flag, @racket[rebuild?] will be invoked
 on every file change (create, delete, modify) in the project. If @racket[rebuild?]
-returns @racket[#f], then Frog will not rebuild the project
-(for this particular change). Otherwise, Frog will rebuild the project.
+returns @racket[#f], then Darwin will not rebuild the project
+(for this particular change). Otherwise, Darwin will rebuild the project.
 
 By default, @racket[rebuild?] will return @racket[#t] and also make a beep,
 except the case where the changed file has an extension either

@@ -3,7 +3,7 @@
 `.rkt` files in this directory `provide` things a user may `require`
 in their blog project files:
 
-- `frog.rkt`
+- `darwin.rkt`
 - templates
   - `page-template.html`
   - `post-template.html`

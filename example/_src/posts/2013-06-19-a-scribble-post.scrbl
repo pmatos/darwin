@@ -103,7 +103,7 @@ Here's a fancier one:
 Here's an example of using Pygments to syntax highlight non-Racket
 code:
 
-@(require frog/scribble)
+@(require darwin/scribble)
 
 @pygment-code[#:lang "js"]{
 function foo() {

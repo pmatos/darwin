@@ -23,13 +23,13 @@
   (path? #:img-local-path path? #:img-uri-prefix string? . -> . (listof xexpr?))
   ;; This way of running Scribble is cribbed from Ryan Culpepper's
   ;; Scriblogify:
-  (define dir (path->string (make-temporary-file "frog~a" 'directory)))
+  (define dir (path->string (make-temporary-file "darwin~a" 'directory)))
   (parameterize ([current-namespace (make-base-namespace)]
                  [current-command-line-arguments
                   (vector "--quiet"
                           "--html"
                           "--dest" dir
-                          "--dest-name" "frog.html"
+                          "--dest-name" "darwin.html"
                           "--redirect" "https://docs.racket-lang.org/local-redirect/"
                           "--redirect-main" "https://docs.racket-lang.org"
                           "++xref-in" "setup/xref" "load-collections-xref"
@@ -47,7 +47,7 @@
   ;; Extract the part we care about -- the elements in the "main" div
   ;; after the "versionbox" div.  (The `match` might be too fragile
   ;; way to do this.)
-  (match (~> (build-path dir "frog.html")
+  (match (~> (build-path dir "darwin.html")
              (with-input-from-file read-html-as-xexprs)
              cadr)
     ; HTML produced from #scribble/manual

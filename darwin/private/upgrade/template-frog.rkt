@@ -1,29 +1,29 @@
 #lang scribble/text
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-@;; Evaluates to text for a frog.rkt equivalent of a user's old .frogrc. ;;
+@;; Evaluates to text for a darwin.rkt equivalent of a user's old .darwinrc. ;;
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 @(require racket/format
           racket/function
           "old-config.rkt")
 
-@;; Intended to run in same dir as .frogrc
-@(define frogrc ".frogrc")
+@;; Intended to run in same dir as .darwinrc
+@(define darwinrc ".darwinrc")
 
 @(define (get sym def)
-   (get-config sym def frogrc))
+   (get-config sym def darwinrc))
 
 @(define get/v (compose1 ~v get))
 
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-#lang frog/config
+#lang darwin/config
 
-;; Called early when Frog launches. Use this to set parameters defined
-;; in frog/params.
+;; Called early when Darwin launches. Use this to set parameters defined
+;; in darwin/params.
 (define/contract (init)
   (-> any)
   @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  @;; Many frogrc items directly correspond to parameters that still ;;
+  @;; Many darwinrc items directly correspond to parameters that still ;;
   @;; exist, and the user should set in their `init`, here.          ;;
   @;; (For the rest, see `enhance-body` below.)                      ;;
   @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -52,7 +52,7 @@
 (define/contract (enhance-body xs)
   (-> (listof xexpr/c) (listof xexpr/c))
   @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  @;; The remaining frogrc items control whether we call certain ;;
+  @;; The remaining darwinrc items control whether we call certain ;;
   @;; body-enhancing functions, or, are arguments to them:       ;;
   @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Here we pass the xexprs through a series of functions.
@@ -69,7 +69,7 @@
             @(when (or code? prose?)
                @list{(add-racket-doc-links #:code? @~v[code?] #:prose? @~v[prose?])}))))))
 
-;; Called from `raco frog --clean`.
+;; Called from `raco darwin --clean`.
 (define/contract (clean)
   (-> any)
   (void))

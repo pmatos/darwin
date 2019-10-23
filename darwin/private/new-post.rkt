@@ -76,7 +76,7 @@
   (or (getenv "EDITOR") (getenv "VISUAL")
       (raise-user-error
        'new-post
-       "EDITOR or VISUAL must be defined in the environment to use $EDITOR in frog.rkt")))
+       "EDITOR or VISUAL must be defined in the environment to use $EDITOR in darwin.rkt")))
 
 (define (replace-$editor-in-current-editor)
   (regexp-replaces (current-editor) `([#rx"\\$EDITOR" ,get-editor])))

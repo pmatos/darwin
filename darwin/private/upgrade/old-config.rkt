@@ -1,7 +1,7 @@
 #lang racket/base
 
-;; This is only used to read the deprecated .frogrc -- from which we attempt
-;; to create an equivalent frog.rkt for users.
+;; This is only used to read the deprecated .darwinrc -- from which we attempt
+;; to create an equivalent darwin.rkt for users.
 
 (require racket/dict
          racket/file
@@ -10,22 +10,22 @@
          racket/string
          "../verbosity.rkt")
 
-(provide maybe-frogrc->frog.rkt
+(provide maybe-darwinrc->darwin.rkt
          get-config)
 
-(define-runtime-path template-frog.rkt "template-frog.rkt")
+(define-runtime-path template-darwin.rkt "template-darwin.rkt")
 
-(define (maybe-frogrc->frog.rkt top)
-  (when (file-exists? (build-path top ".frogrc"))
-    (define frog.rkt (build-path top "frog.rkt"))
-    (unless (file-exists? frog.rkt)
-      (prn0 "Creating frog.rkt from .frogrc -- see upgrade documentation.")
+(define (maybe-darwinrc->darwin.rkt top)
+  (when (file-exists? (build-path top ".darwinrc"))
+    (define darwin.rkt (build-path top "darwin.rkt"))
+    (unless (file-exists? darwin.rkt)
+      (prn0 "Creating darwin.rkt from .darwinrc -- see upgrade documentation.")
       (flush-output)
       (parameterize ([current-directory top])
-        (with-output-to-file frog.rkt
+        (with-output-to-file darwin.rkt
           #:mode 'text #:exists 'error
-          (λ () (dynamic-require template-frog.rkt #f)))
-        (add-deprecation-comment-to-.frogrc)))))
+          (λ () (dynamic-require template-darwin.rkt #f)))
+        (add-deprecation-comment-to-.darwinrc)))))
 
 (define config #f) ;; (hash/c symbol? any/c)
 (define (get-config name default cfg-path) ;; (symbol? any/c path? -> any/c)
@@ -66,15 +66,15 @@
     [(or "false" "#f") #f]
     [else v]))
 
-(define (add-deprecation-comment-to-.frogrc)
+(define (add-deprecation-comment-to-.darwinrc)
   (define s (string-join (list (make-string 76 #\#)
                                "#"
                                "# THIS FILE IS NO LONGER USED."
-                               "# Use frog.rkt instead."
+                               "# Use darwin.rkt instead."
                                "#"
                                (make-string 76 #\#)
-                               (file->string ".frogrc" #:mode 'text))
+                               (file->string ".darwinrc" #:mode 'text))
                          "\n"))
-  (display-to-file s ".frogrc"
+  (display-to-file s ".darwinrc"
                    #:mode 'text
                    #:exists 'replace))

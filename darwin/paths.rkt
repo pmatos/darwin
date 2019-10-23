@@ -24,7 +24,7 @@
  (parameter-doc top
                 (parameter/c (or/c #f absolute-path?))
                 path
-                @{The project directory root. Frog sets the value
+                @{The project directory root. Darwin sets the value
                   after it has initialized and found the location of
                   @secref["config"]. Many other functions in this
                   module expect @racket[top] to be non-@racket[#f],
@@ -81,8 +81,8 @@
 ;;; Intermediate file directory
 
 (define/doc (obj-path absolute-path?)
-  @{The @filepath{.frog} build cache subdirectory.}
-  (build-path (top) ".frog"))
+  @{The @filepath{.darwin} build cache subdirectory.}
+  (build-path (top) ".darwin"))
 
 
 ;;; Output directories
@@ -169,7 +169,7 @@
     file --- this result isn't sufficient. You should run the result
     through @racket[canonical-uri], and if you need @racket[current-scheme/host]
     prepended, in turn through @racket[full-uri].}
-  #:ex [(require frog/paths frog/params)]
+  #:ex [(require darwin/paths darwin/params)]
   #:ex [(parameterize ([top "/projects/blog"]
                        [current-output-dir "."])
           (abs->rel/www (string->path "/projects/blog/css")))
@@ -229,7 +229,7 @@
   @{Possibly rewrite a URI path to take account of non-@racket[#f]
     @racket[current-uri-prefix] and @racket[uri-path-segment-encode]
     it.}
-  #:ex [(require frog/paths frog/params)]
+  #:ex [(require darwin/paths darwin/params)]
   #:ex [(canonical-uri "relative/λ/path")
         "relative/%CE%BB/path"]
   #:ex [(parameterize ([current-uri-prefix #f])
@@ -266,7 +266,7 @@
 
 (define/doc (full-uri [uri-path string?] string?)
   @{Given a URI path string, prepend the scheme & host to make a full URI.}
-  #:ex [(require frog/paths frog/params)]
+  #:ex [(require darwin/paths darwin/params)]
   #:ex [(parameterize ([current-scheme/host "https://www.example.com"])
           (full-uri "/absolute/path/to/file.html"))
         "https://www.example.com/absolute/path/to/file.html"]
@@ -289,7 +289,7 @@
                     are replaced by hyphens.}
               @item{The string is Unicode normalized to NFD form using
                     @racket[string-normalize-nfd]}]}
-  #:ex [(require frog/paths)]
+  #:ex [(require darwin/paths)]
   #:ex [(slug "Foo? Bar. Baz.")
         "Foo-Bar-Baz"]
   #:ex [(slug "Here's a question--how many hyphens???")

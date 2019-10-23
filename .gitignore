@@ -1,9 +1,9 @@
 .DS_Store
 compiled/
-frog/doc/
+darwin/doc/
 
 # Generated files under example/
-example/.frog/
+example/.darwin/
 example/index*.html
 example/About.html
 example/sitemap.txt

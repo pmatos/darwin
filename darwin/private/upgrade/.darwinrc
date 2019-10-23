@@ -1,14 +1,14 @@
 # -*- conf -*-
 
 #########################################################################
-# THIS FILE IS OBSOLETE. It is auto-upgraded to an equivalent frog.rkt. #
+# THIS FILE IS OBSOLETE. It is auto-upgraded to an equivalent darwin.rkt. #
 # Moved here from example project; keeping for testing convenience.     #
 #########################################################################
 
 # Required: Should NOT end in trailing slash.
 scheme/host = http://www.example.com
 
-# A path prepended to URIs, including those specified here in .frogrc
+# A path prepended to URIs, including those specified here in .darwinrc
 # such as `permalink` and `posts-index-uri`. Defaults to `/`. This is
 # useful when you want to embed your blog in another web site.
 uri-prefix = /
@@ -46,7 +46,7 @@ show-tag-counts? = true
 permalink = /blog/{year}/{month}/{day}/{title}/index.html
 # There is also {filename}, which is the `this-part` portion of
 # your post's YYYY-MM-DD-this-part.md file name. This is in case
-# you don't like Frog's encoding of your post title and want to
+# you don't like Darwin's encoding of your post title and want to
 # specify it exactly yourself, e.g. to match a previous blog URI.
 
 # Should index page items contain full posts -- more than just the
@@ -105,7 +105,7 @@ posts-index-uri = /index.html
 # the repo/project top directory.
 #
 # This may be an absolute or relative path. If relative, it's relative
-# to the project top directory, i.e. to where this .frogrc file is
+# to the project top directory, i.e. to where this .darwinrc file is
 # located.
 source-dir = _src
 
@@ -117,7 +117,7 @@ source-dir = _src
 # files to their final destination.
 #
 # This may be an absolute or relative path. If relative, it's relative
-# to the project top directory, i.e. to where this .frogrc file is
+# to the project top directory, i.e. to where this .darwinrc file is
 # located.
 output-dir = .
 

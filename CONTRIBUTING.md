@@ -1,16 +1,16 @@
-# Contributing to Frog
+# Contributing to Darwin
 
-Interested in improving Frog? Great!
+Interested in improving Darwin? Great!
 
 # One-time setup
 
-1. At https://github.com/greghendershott/frog click the `Fork` button.
+1. At https://github.com/pmatos/darwin click the `Fork` button.
 
 2. `git clone` your forked repo to your computer.
 
 3. Run `make install`. This installs a few Racket packages needed by
-   Frog. Also it lets you run Frog just like normal users do: `raco
-   frog`.
+   Darwin. Also it lets you run Darwin just like normal users do: `raco
+   darwin`.
 
 # Ongoing development
 
@@ -23,8 +23,8 @@ more details if you're curious.
 
 # The `example` project
 
-One thing that `make ci-extra-checks` does is build an example Frog
-blog project in the `example` directory. Making Frog build this can be
+One thing that `make ci-extra-checks` does is build an example Darwin
+blog project in the `example` directory. Making Darwin build this can be
 a good way to test your code. If you introduce a new feature, consider
 adding a new post to that site that illustrates and exercises your
 feature.
@@ -36,5 +36,5 @@ To share your bug fix or new feature, please create a [pull request].
 If you're contemplating a big change, consider opening an [issue]
 early to discuss it and get feedback before doing all the work.
 
-[pull request]: https://github.com/greghendershott/frog/pulls
-[issue]: https://github.com/greghendershott/frog/issues
+[pull request]: https://github.com/pmatos/darwin/pulls
+[issue]: https://github.com/pmatos/darwin/issues

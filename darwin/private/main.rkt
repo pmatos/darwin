@@ -17,7 +17,7 @@
          (except-in xml xexpr->string)
          (only-in find-parent-dir find-parent-containing)
          "bodies-page.rkt"
-         (prefix-in user-frog.rkt: "../config/private/load.rkt")
+         (prefix-in user-darwin.rkt: "../config/private/load.rkt")
          "new-post.rkt"
          "non-posts.rkt"
          "upgrade/old-config.rkt"
@@ -42,14 +42,14 @@
   (when (eq? 'windows (system-type 'os))
     (file-stream-buffer-mode (current-output-port) 'line)
     (file-stream-buffer-mode (current-error-port) 'line))
-  (printf "Darwin ~a\n" (frog-version))
-  (parameterize ([top (find-frog-root)])
+  (printf "Darwin ~a\n" (darwin-version))
+  (parameterize ([top (find-darwin-root)])
     (when (vector-member "--init" (current-command-line-arguments))
       (init-project)
       (exit 0))
     ;; When the user has supplied help args (or no args at all) then
     ;; we want to just show the help and exit. (We specifically don't
-    ;; want to deal with a missing frog.rkt config file.) But doing so
+    ;; want to deal with a missing darwin.rkt config file.) But doing so
     ;; is awkward because `command-line` doesn't expose a `show-help`
     ;; function we can just call directly and exit. So, mutate
     ;; current-command-line-arguments as necessary to prevent
@@ -65,9 +65,9 @@
              #t]
             [else #f]))
     (unless help?
-      (maybe-frogrc->frog.rkt (top))
-      (user-frog.rkt:load (top))
-      (user-frog.rkt:init))
+      (maybe-darwinrc->darwin.rkt (top))
+      (user-darwin.rkt:load (top))
+      (user-darwin.rkt:init))
     (define watch? #f)
     (define port 3000)
     (define root
@@ -79,20 +79,20 @@
                                                 (build-list depth (λ _ 'up)))))))
     (define edit-new-post? (make-parameter #f))
     (command-line
-     #:program "raco frog"
+     #:program "raco darwin"
      #:once-each
      [("--doc")
       (""
-       "Browse full documentation for Frog.")
-      (help "T:frog")]
+       "Browse full documentation for Darwin.")
+      (help "T:darwin")]
      [("--init")
       (""
-       "Initialize current directory as a new Frog project, creating"
+       "Initialize current directory as a new Darwin project, creating"
        "default files as a starting point.")
       (void)] ;; handled above
      [("--edit")
       (""
-       "Opens the file created by -n or -N in `current-editor` in frog.rkt"
+       "Opens the file created by -n or -N in `current-editor` in darwin.rkt"
        "Supply this flag before one of those flags.")
       (edit-new-post? #t)]
      #:multi
@@ -131,7 +131,7 @@
       (""
        "The root directory for -s/--serve or -p/--preview."
        "Supply this flag before one of those flags."
-       "If frog.rkt says (current-uri-prefix \"/path/to/site/blog\"),
+       "If darwin.rkt says (current-uri-prefix \"/path/to/site/blog\"),
        try using `--root /path/to/site`."
        "Default: One less than the number of dirs in current-uri-prefix,
         above current-output-dir.")
@@ -165,16 +165,16 @@
       (current-verbosity 2)
       (prn2 "Very verbose mode")])))
 
-(define (find-frog-root)
+(define (find-darwin-root)
   (define (try file)
     (find-parent-containing (current-directory) file))
-  (or (let ([x (or (try "frog.rkt")
-                   (try ".frogrc"))])
+  (or (let ([x (or (try "darwin.rkt")
+                   (try ".darwinrc"))])
         (and x (simplify-path x)))
       (current-directory)))
 
 (define-runtime-path info.rkt "../../info.rkt")
-(define (frog-version)
+(define (darwin-version)
   ;; Because (require "../info.rkt") (#%info-lookup version) errors in
   ;; some cases with Racket 6, resort to regexp-ing info.rkt as text.
   (match (file->string info.rkt #:mode 'text)
@@ -190,7 +190,7 @@
     (make-directories-if-needed to)
     (copy-directory/files from to))
   (prn0 "Creating files in ~a:" (build-path (top)))
-  (copy "frog.rkt")
+  (copy "darwin.rkt")
   (copy "_src/About.md")
   (copy "_src/page-template.html")
   (copy "_src/post-template.html")
@@ -198,7 +198,7 @@
   (copy "css/")
   (copy "js/")
   (copy "img/")
-  (prn0 "Project ready. Try `raco frog -bp` to build and preview."))
+  (prn0 "Project ready. Try `raco darwin -bp` to build and preview."))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -384,7 +384,7 @@
   (clean-non-post-output-files)
   (clean-tag-output-files)
   (clean-serialized-posts)
-  (user-frog.rkt:clean))
+  (user-darwin.rkt:clean))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -401,7 +401,7 @@
                #:root root)
   (define watcher-thread
     (cond [watch? (unless (and watch-path watch-callback)
-                    (error 'frog "No watch callback given"))
+                    (error 'darwin "No watch callback given"))
                   (watch-directory (build-path watch-path)
                                    '(file)
                                    watch-callback

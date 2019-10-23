@@ -1,8 +1,7 @@
+#lang darwin/config
 
-#lang frog/config
-
-;; Called early when Frog launches. Use this to set parameters defined
-;; in frog/params.
+;; Called early when Darwin launches. Use this to set parameters defined
+;; in darwin/params.
 (define/contract (init)
   (-> any)
   (current-scheme/host "http://www.example.com")
@@ -22,7 +21,7 @@
       (auto-embed-tweets #:parents? #t)
       (add-racket-doc-links #:code? #t #:prose? #f)))
 
-;; Called from `raco frog --clean`.
+;; Called from `raco darwin --clean`.
 (define/contract (clean)
   (-> any)
   (void))

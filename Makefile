@@ -1,4 +1,4 @@
-PACKAGE-NAME=frog
+PACKAGE-NAME=darwin
 
 DEPS-FLAGS=--check-pkg-deps --unused-pkg-deps
 
@@ -43,18 +43,18 @@ ci-extra-checks: build-example init-build
 # Build the example project. Check that an expected URI exists in
 # sitemap.txt and is Unicode NFD normalized and percent-encoded.
 build-example:
-	cd example && raco frog --verbose --clean --build
+	cd example && raco darwin --verbose --clean --build
 	grep 'http://www.example.com/2017/05/la-biblioteca-esta%CC%81-en-el-esto%CC%81mago-de-godzilla.html' example/sitemap.txt
 
-# Exercise raco frog --init
+# Exercise raco darwin --init
 TEST-PROJECT=test-blog
 init-build:
 	mkdir $(TEST-PROJECT)                 && \
 	cd $(TEST-PROJECT)                    && \
-	raco frog --init                      && \
-	raco frog --verbose --build           && \
-	raco frog --new-markdown "Hey λ está" && \
-	raco frog --new-scribble "Hey λ allí" && \
-	raco frog --verbose --build           && \
+	raco darwin --init                      && \
+	raco darwin --verbose --build           && \
+	raco darwin --new-markdown "Hey λ está" && \
+	raco darwin --new-scribble "Hey λ allí" && \
+	raco darwin --verbose --build           && \
 	cd ..                                 && \
 	rm -rf $(TEST-PROJECT)

@@ -32,7 +32,7 @@
        ;;
        ;; But if the user has failed to define one of the mandatory functions
        ;; we want to supply a helpful error message that specifically
-       ;; identifies it. And of course preserve their frog.rkt stx srcloc.
+       ;; identifies it. And of course preserve their darwin.rkt stx srcloc.
        ;;
        ;; So we local-expand their forms, catch the appropriate syntax errors,
        ;; and re-raise them in a more-helpful form.
@@ -53,7 +53,7 @@
                   (memq (fail-sym e) provide-syms)))
            (λ (e)
              (raise-syntax-error
-              'frog/config
+              'darwin/config
               (format "You must define a function named \"~a\"" (fail-sym e))
               stx))])
          (local-expand (syntax/loc #'(forms ...)
