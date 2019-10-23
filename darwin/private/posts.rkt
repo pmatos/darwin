@@ -1,6 +1,6 @@
 #lang racket/base
 
-(require markdown
+(require markdown-ng
          racket/contract/base
          racket/contract/region
          racket/file

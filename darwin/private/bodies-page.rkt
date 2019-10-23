@@ -1,6 +1,6 @@
 #lang racket/base
 
-(require markdown
+(require markdown-ng
          net/uri-codec
          racket/dict
          racket/date

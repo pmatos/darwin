@@ -4,7 +4,7 @@
 (define deps '(["base" #:version "6.2"]
                "find-parent-dir"
                "html-lib"
-               ["markdown" #:version "0.25"]
+               ["markdown-ng" #:version "0.1"]
                "racket-index"
                ["rackjure" #:version "0.9"]
                "reprovide-lang"
