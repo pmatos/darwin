@@ -64,7 +64,6 @@
              #t]
             [else #f]))
     (unless help?
-      (maybe-darwinrc->darwin.rkt (top))
       (user-darwin.rkt:load (top))
       (user-darwin.rkt:init))
     (define watch? #f)
