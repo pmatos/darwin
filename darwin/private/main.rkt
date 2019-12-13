@@ -20,7 +20,6 @@
          (prefix-in user-darwin.rkt: "../config/private/load.rkt")
          "new-post.rkt"
          "non-posts.rkt"
-         "upgrade/old-config.rkt"
          "params.rkt"
          "paths.rkt"
          "post-struct.rkt"
