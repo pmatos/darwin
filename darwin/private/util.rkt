@@ -4,7 +4,7 @@
          racket/file
          racket/pretty
          rackjure/threading
-         (only-in markdown display-xexpr)
+         (only-in markdown-ng display-xexpr)
          "verbosity.rkt")
 
 (provide pp
