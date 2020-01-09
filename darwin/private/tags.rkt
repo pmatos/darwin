@@ -8,7 +8,7 @@
          racket/string
          rackjure/str
          rackjure/threading
-         (only-in markdown xexpr->string)
+         (only-in markdown-ng xexpr->string)
          "bodies-page.rkt"
          "feeds.rkt"
          "params.rkt"
