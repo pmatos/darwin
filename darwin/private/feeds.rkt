@@ -6,7 +6,7 @@
          racket/string
          rackjure/str
          rackjure/threading
-         (only-in markdown xexpr->string)
+         (only-in markdown-ng xexpr->string)
          "author.rkt"
          "params.rkt"
          "paths.rkt"
