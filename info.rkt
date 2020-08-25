@@ -5,6 +5,7 @@
                "find-parent-dir"
                "html-lib"
                ["markdown-ng" #:version "0.1"]
+               txexpr
                "racket-index"
                ["rackjure" #:version "0.9"]
                "reprovide-lang"
