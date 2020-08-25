@@ -1,33 +1,36 @@
 #lang at-exp racket/base
+;; ---------------------------------------------------------------------------------------------------
 
-(require json
-         net/uri-codec
-         net/url
-         racket/contract/base
-         racket/list
+(require net/url
          racket/match
-         racket/string
          racket/port
          rackjure/str
          rackjure/threading
          scribble/srcdoc
-         (for-doc racket/base
-                  scribble/manual)
          xml/xexpr
+         txexpr
+         (for-doc racket/base scribble/manual)
+         json
+         net/uri-codec
+         racket/contract/base
+         racket/list
+         racket/string
          "private/define-doc.rkt"
          "private/enhance-body/add-doc-links/doc-uri.rkt"
          "private/enhance-body/syntax-highlight/pygments.rkt"
          "private/html.rkt"
          "private/xexpr-map.rkt")
 
+;; ---------------------------------------------------------------------------------------------------
+
 (define/doc (syntax-highlight
-             [x-expressions (listof xexpr/c)]
+             [x-expressions (listof txexpr?)]
              [#:python-executable python-executable path-string? (if (eq? (system-type) 'windows)
                                                                      "python.exe"
                                                                      "python")]
              [#:line-numbers? line-numbers? boolean? #t]
              [#:css-class css-class string? "source"]
-             (listof xexpr/c))
+             (listof txexpr?))
   @{Use Pygments to highlight markdown code blocks.
     @margin-note*{Tip: In Scribble format sources, you can use
                   @racket[pygment-code].}
