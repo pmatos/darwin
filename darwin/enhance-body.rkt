@@ -1,20 +1,20 @@
 #lang at-exp racket/base
 ;; ---------------------------------------------------------------------------------------------------
 
-(require net/url
+(require json
+         net/uri-codec
+         net/url
+         racket/contract/base
+         racket/list
          racket/match
          racket/port
+         racket/string
          rackjure/str
          rackjure/threading
          scribble/srcdoc
-         xml/xexpr
-         txexpr
          (for-doc racket/base scribble/manual)
-         json
-         net/uri-codec
-         racket/contract/base
-         racket/list
-         racket/string
+         txexpr
+         xml/xexpr
          "private/define-doc.rkt"
          "private/enhance-body/add-doc-links/doc-uri.rkt"
          "private/enhance-body/syntax-highlight/pygments.rkt"
